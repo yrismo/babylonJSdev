@@ -1,5 +1,3 @@
-import "@babylonjs/core/Debug/debugLayer";
-import "@babylonjs/inspector";
 import { Scene, ArcRotateCamera, Vector3, HemisphericLight, MeshBuilder, } from "@babylonjs/core";
 function createBox(scene) {
     let box = MeshBuilder.CreateBox("box", { size: 1 }, scene);
@@ -28,7 +26,6 @@ function createArcRotateCamera(scene) {
 }
 export default function createStartScene(engine) {
     let that = { scene: new Scene(engine) };
-    that.scene.debugLayer.show();
     that.box = createBox(that.scene);
     that.light = createLight(that.scene);
     that.sphere = createSphere(that.scene);
