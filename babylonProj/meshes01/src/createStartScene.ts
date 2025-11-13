@@ -16,6 +16,7 @@ import {
     StandardMaterial,
     Color3,
     ShadowGenerator,
+    Texture,
   } from "@babylonjs/core";
 
   function createHemisphericLight(scene: Scene ){
@@ -37,7 +38,7 @@ import {
 }
 
 function createDirectionalLight(scene: Scene ){
-    const light = new DirectionalLight("light", new Vector3(0.2, -1, 0.2),scene);
+    const light = new DirectionalLight("light", new Vector3(-0.2, -0.5, -0.2),scene);
     light.position = new Vector3(20, 40, 20);
     light.intensity = 0.7;
     light.diffuse = new Color3(1, 0, 0);
@@ -86,12 +87,13 @@ function createDirectionalShadows(light: DirectionalLight, sphere: Mesh ,box: Me
 
 
   function getMaterial(scene: Scene){
-    scene.ambientColor = new Color3(1,1,1);
+    scene.ambientColor = new Color3(0.5, 1, 1);
   const myMaterial = new StandardMaterial("myMaterial", scene);
   myMaterial.diffuseColor = new Color3(1, 0, 1);
   myMaterial.specularColor = new Color3(0.5, 0.6, 0.87);
-  myMaterial.emissiveColor = new Color3(1, 1, 1);
+  myMaterial.emissiveColor = new Color3(1, 0.4, 0.5);
   myMaterial.ambientColor = new Color3(0.23, 0.98, 0.53);
+  myMaterial.ambientTexture = new Texture("./../meshes01/assets/textures/grass.jpg", scene);
   return myMaterial
   }
 
