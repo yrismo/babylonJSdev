@@ -3,6 +3,7 @@ import createStartScene from "./createStartScene";
 import './main.css';
 import {createCharacterController} from "./createCharacterController";
 import { gui } from "./gui";
+import { setupCollisions } from "./collision";
 
 const CanvasName = "renderCanvas";
 
@@ -18,6 +19,7 @@ let eng = new Engine(canvas, true, {}, true);
     const startScene = await createStartScene(eng);
     createCharacterController(startScene.scene);
     gui(startScene.scene);
+    setupCollisions(startScene);
     eng.runRenderLoop(() => {
         startScene.scene.render();
     });

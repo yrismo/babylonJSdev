@@ -99,7 +99,7 @@ function addAssets(scene: Scene) {
     "tree1 task",
     "",
     "./assets/nature/gltf/",
-    "CommonTree_1.gltf"
+    "BirchTree_1.gltf"
   );
   tree1.onSuccess = function (task) {
     const root = task.loadedMeshes[0];
@@ -121,7 +121,7 @@ function addAssets(scene: Scene) {
     "tree1 task",
     "",
     "./assets/nature/gltf/",
-    "CommonTree_2.gltf"
+    "BirchTree_2.gltf"
   );
   tree2.onSuccess = function (task) {
     task.loadedMeshes[0].position = new Vector3(0, 0, 2);
@@ -135,7 +135,7 @@ function addAssets(scene: Scene) {
     "tree1 task",
     "",
     "./assets/nature/gltf/",
-    "CommonTree_3.gltf"
+    "BirchTree_3.gltf"
   );
   tree3.onSuccess = function (task) {
     task.loadedMeshes[0].position = new Vector3(-3, 0, 2);
