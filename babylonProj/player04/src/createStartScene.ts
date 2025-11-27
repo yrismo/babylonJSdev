@@ -33,7 +33,14 @@ function createGround(scene: Scene) {
     { width: 16, height: 16 },
     scene
   );
-  
+  var texture = new StandardMaterial("reflective", scene);
+  texture.ambientTexture = new Texture(
+    "./assets/nature/textures/grass.png",
+    scene
+  );
+  texture.diffuseColor = new Color3(1, 1, 1);
+  ground.material = texture;
+
     // Create a static box shape.
   let groundAggregate = new PhysicsAggregate(ground, PhysicsShapeType.BOX, { mass: 0 }, scene);
   return groundAggregate;
@@ -82,7 +89,7 @@ function createBox2(scene: Scene) {
 
   var texture = new StandardMaterial("reflective", scene);
   texture.ambientTexture = new Texture(
-    "./assets/textures/wood.jpg",
+    "./assets/nature/textures/rocks.png",
     scene
   );
   texture.diffuseColor = new Color3(1, 1, 1);
