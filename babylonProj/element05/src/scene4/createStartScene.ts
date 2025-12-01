@@ -10,8 +10,6 @@ import {
     Light,
     Camera,
     Engine,
-    Texture,
-    StandardMaterial,
     Color3
   } from "@babylonjs/core";
   
@@ -27,11 +25,6 @@ import {
       { path: myPath, radius: 0.4, sideOrientation: Mesh.DOUBLESIDE },
       scene
     );
-  
-    var texture = new StandardMaterial("reflective", scene);
-    texture.ambientTexture = new Texture("./assets/reflectivity.png", scene);
-    texture.diffuseColor = new Color3(1, 1, 1);
-    tube.material = texture;
     return tube;
   }
 

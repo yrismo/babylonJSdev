@@ -10,7 +10,6 @@ import {
     Light,
     Camera,
     Engine,
-    Texture,
     StandardMaterial,
     Color3
   } from "@babylonjs/core";
@@ -25,11 +24,6 @@ import {
     torus.position.x = -1;
     torus.position.y = 2;
     torus.position.z = 1;
-  
-    var texture = new StandardMaterial("reflective", scene);
-    texture.ambientTexture = new Texture("./assets/reflectivity.png", scene);
-    texture.diffuseColor = new Color3(1, 1, 1);
-    torus.material = texture;
 
     return torus;
   }

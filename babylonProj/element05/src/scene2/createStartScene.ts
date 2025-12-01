@@ -11,7 +11,6 @@ import {
     Camera,
     Engine,
     StandardMaterial,
-    Texture,
     Color3
   } from "@babylonjs/core";
   
@@ -27,8 +26,6 @@ import {
     cylinder.position.z = 1;
   
     var texture = new StandardMaterial("reflective", scene);
-    texture.ambientTexture = new Texture("./assets/reflectivity.png", scene);
-    texture.diffuseColor = new Color3(1, 1, 1);
     cylinder.material = texture;
     return cylinder;
   }
