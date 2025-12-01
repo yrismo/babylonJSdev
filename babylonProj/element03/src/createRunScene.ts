@@ -24,7 +24,7 @@ export default function createRunScene(runScene: SceneData) {
   collisionDeclaration(runScene);
 
   const environmentTexture = new CubeTexture(
-    "public/assets/textures/industrialSky.env",
+    "./assets/textures/industrialSky.env",
     runScene.scene
   );
   const skybox = runScene.scene.createDefaultSkybox(

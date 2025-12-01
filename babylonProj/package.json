@@ -12,7 +12,13 @@
     "villagebuild": "tsc && vite build village",
     "villagepreview": "vite preview village --host",
     "collisionbuild": "tsc && vite build collision",
-    "collisionpreview": "vite preview collision --host"
+    "collisionpreview": "vite preview collision --host",
+    "element01build": "tsc && vite build element01",
+    "element01preview": "vite preview element01 --host",
+    "element03build": "tsc && vite build element03",
+    "element03preview": "vite preview element03 --host",
+    "element04build": "tsc && vite build element04",
+    "element04preview": "vite preview element04 --host"
   },
   "devDependencies": {
     "typescript": "~5.9.3",
