@@ -10,29 +10,13 @@ import {
     Light,
     Camera,
     Engine,
-    Texture,
-    StandardMaterial,
-    Color3
   } from "@babylonjs/core";
   
   
-  function createTube(scene: Scene) {
-    const myPath = [
-      new Vector3(1.85, 0.85, 0.85),
-      new Vector3(1.35, 0.35, 0.35),
-    ];
-  
-    const tube = MeshBuilder.CreateTube(
-      "tube",
-      { path: myPath, radius: 0.4, sideOrientation: Mesh.DOUBLESIDE },
-      scene
-    );
-  
-    var texture = new StandardMaterial("reflective", scene);
-    texture.ambientTexture = new Texture("./assets/reflectivity.png", scene);
-    texture.diffuseColor = new Color3(1, 1, 1);
-    tube.material = texture;
-    return tube;
+  function createBox(scene: Scene) {
+    let box = MeshBuilder.CreateBox("box",{size: 1}, scene);
+    box.position.y = 3;
+    return box;
   }
 
   
@@ -81,7 +65,7 @@ import {
   export default function createStartScene(engine: Engine) {
     interface SceneData {
       scene: Scene;
-      tube?: Mesh;
+      box?: Mesh;
       light?: Light;
       sphere?: Mesh;
       ground?: Mesh;
@@ -91,7 +75,7 @@ import {
     let that: SceneData = { scene: new Scene(engine) };
     // that.scene.debugLayer.show();
   
-    that.tube = createTube(that.scene);
+    that.box = createBox(that.scene);
     that.light = createLight(that.scene);
     that.sphere = createSphere(that.scene);
     that.ground = createGround(that.scene);
