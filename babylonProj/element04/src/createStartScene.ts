@@ -71,7 +71,7 @@ function createBox1(scene: Scene) {
 
   var texture = new StandardMaterial("reflective", scene);
   texture.ambientTexture = new Texture(
-    "./assets/textures/crate.png",
+    "./assets/nature/textures/crate.png",
     scene
   );
   texture.diffuseColor = new Color3(1, 1, 1);
@@ -89,7 +89,25 @@ function createBox2(scene: Scene) {
 
   var texture = new StandardMaterial("reflective", scene);
   texture.ambientTexture = new Texture(
-    "./assets/nature/textures/rocks.png",
+    "./assets/nature/textures/crate.png",
+    scene
+  );
+  texture.diffuseColor = new Color3(1, 1, 1);
+  box.material = texture;
+  let box2Aggregate = new PhysicsAggregate(box, PhysicsShapeType.BOX, {mass: 0.2, restitution:0.1, friction:0.4}, scene);
+  box2Aggregate.body.setCollisionCallbackEnabled(true);
+  return box2Aggregate;
+}
+
+function createBox3(scene: Scene) {
+  let box = MeshBuilder.CreateBox("box", { width: 1, height: 1 }, scene);
+  box.position.x = -0.7;
+  box.position.y = 5;
+  box.position.z = 1;
+
+  var texture = new StandardMaterial("reflective", scene);
+  texture.ambientTexture = new Texture(
+    "./assets/nature/textures/crate.png",
     scene
   );
   texture.diffuseColor = new Color3(1, 1, 1);
@@ -110,7 +128,7 @@ function addAssets(scene: Scene) {
   );
   tree1.onSuccess = function (task) {
     const root = task.loadedMeshes[0];
-    root.position = new Vector3(3, 0, 2);
+    root.position = new Vector3(5, 0, 2);
     root.scaling = new Vector3(0.5, 0.5, 0.5);
     // Ensure all child meshes are visible
     task.loadedMeshes.forEach((mesh: any) => {
@@ -120,7 +138,7 @@ function addAssets(scene: Scene) {
     
     // Clone tree1
     const tree1Clone = root.clone("tree1_clone", null);
-    tree1Clone!.position = new Vector3(0, 0, 5);
+    tree1Clone!.position = new Vector3(0, 0, 7);
     //new PhysicsAggregate(tree1Clone!, PhysicsShapeType.MESH, {mass: 0}, scene);
   };
 
@@ -131,7 +149,7 @@ function addAssets(scene: Scene) {
     "BirchTree_2.gltf"
   );
   tree2.onSuccess = function (task) {
-    task.loadedMeshes[0].position = new Vector3(0, 0, 2);
+    task.loadedMeshes[0].position = new Vector3(0, 0, -5);
     task.loadedMeshes[0].scaling = new Vector3(0.5, 0.5, 0.5);
     // Clone tree2
     const tree2Clone = task.loadedMeshes[0].clone("tree2_clone", null);
@@ -145,7 +163,7 @@ function addAssets(scene: Scene) {
     "BirchTree_3.gltf"
   );
   tree3.onSuccess = function (task) {
-    task.loadedMeshes[0].position = new Vector3(-3, 0, 2);
+    task.loadedMeshes[0].position = new Vector3(-5, 0, 2);
     task.loadedMeshes[0].scaling = new Vector3(0.5, 0.5, 0.5);
     // Clone tree3
     const tree3Clone = task.loadedMeshes[0].clone("tree3_clone", null);
@@ -171,6 +189,7 @@ export default async function createStartScene(engine: Engine) {
     camera?: Camera;
     box1?:PhysicsAggregate;
     box2?:PhysicsAggregate;
+    box3?:PhysicsAggregate;
   }
 
   let that: SceneData = { scene: new Scene(engine) };
@@ -192,6 +211,7 @@ export default async function createStartScene(engine: Engine) {
   that.camera = createArcRotateCamera(that.scene);
   that.box1 = createBox1(that.scene);
   that.box2 = createBox2(that.scene);
+  that.box3 = createBox3(that.scene);
   const assetsManager = addAssets(that.scene);
   assetsManager.load();
   return that;
